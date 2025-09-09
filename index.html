@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenis VIP - Oferta Limitada</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#f5f5f5; color:#222; }
+    header { background: linear-gradient(90deg, #111, #444); color:white; padding:20px; text-align:center; }
+    header h1 { font-size:2rem; margin:0; }
+    header p { margin:10px 0; }
+
+    .hero { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:40px; }
+    .hero-text { flex:1; min-width:300px; margin-right:20px; }
+    .hero-text h2 { font-size:2rem; color:#e63946; }
+    .countdown { font-size:1.5rem; margin:20px 0; font-weight:bold; color:#d62828; }
+    .cta { display:inline-block; padding:15px 25px; background:#ff4d00; color:white; font-weight:bold; font-size:1.2rem; text-decoration:none; border-radius:8px; transition:0.3s; }
+    .cta:hover { background:#ff6a33; }
+
+    .carousel { flex:1; min-width:300px; position:relative; }
+    .carousel img { width:100%; border-radius:12px; }
+
+    .footer { background:#111; color:#bbb; text-align:center; padding:20px; font-size:0.9rem; }
+
+    /* Modal formulario */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; }
+    .modal-content { background:#fff; padding:20px; border-radius:12px; max-width:400px; width:90%; }
+    .modal-content h3 { margin-top:0; color:#e63946; }
+    .modal-content label { display:block; margin:10px 0 5px; font-weight:bold; }
+    .modal-content input, .modal-content select { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; }
+    .modal-content button { margin-top:15px; padding:12px; width:100%; border:none; background:#ff4d00; color:white; font-size:1rem; border-radius:8px; cursor:pointer; }
+    .modal-content button:hover { background:#ff6a33; }
+    .close { float:right; font-size:1.5rem; cursor:pointer; color:#444; }
+
+    @media(max-width:768px){
+      .hero { flex-direction:column; text-align:center; }
+      .hero-text { margin:0 0 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔥 Tenis VIP – Edición Limitada</h1>
+  <p>Disponibles en tallas 35 a 43 – ¡Aprovecha antes de que se agoten!</p>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Oferta por tiempo limitado</h2>
+    <div class="countdown" id="countdown">12:00:00</div>
+    <p>¡Corre! Solo pocas unidades por color disponibles.</p>
+    <a href="#" class="cta" onclick="openForm('REF: 8085')">👉 Comprar Ahora</a>
+  </div>
+
+  <div class="carousel">
+    <img id="carousel-img" src="https://i.ibb.co/9r9wZVQ/tenis1.jpg" alt="Tenis VIP">
+  </div>
+</section>
+
+<!-- Modal Formulario -->
+<div class="modal" id="orderModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">&times;</span>
+    <h3>📝 Completa tu pedido</h3>
+    <form id="orderForm">
+      <input type="hidden" id="referencia" name="referencia">
+      
+      <label>Nombre y Apellido</label>
+      <input type="text" id="nombre" required>
+
+      <label>Dirección</label>
+      <input type="text" id="direccion" required>
+
+      <label>Barrio</label>
+      <input type="text" id="barrio" required>
+
+      <label>Teléfono</label>
+      <input type="text" id="telefono" required>
+
+      <label>Ciudad</label>
+      <input type="text" id="ciudad" required>
+
+      <label>Departamento</label>
+      <input type="text" id="departamento" required>
+
+      <label>Color</label>
+      <select id="color" required>
+        <option value="Café con Azul (REF: 8085)">Café con Azul (REF: 8085)</option>
+        <option value="Blanco con Azul/Gris (REF: 3636)">Blanco con Azul/Gris (REF: 3636)</option>
+        <option value="Negro con Gris (REF: 0054)">Negro con Gris (REF: 0054)</option>
+      </select>
+
+      <label>Talla</label>
+      <select id="talla" required>
+        <option value="">Seleccione su talla</option>
+        <option>35</option><option>36</option><option>37</option><option>38</option>
+        <option>39</option><option>40</option><option>41</option><option>42</option><option>43</option>
+      </select>
+
+      <label>Método de Pago</label>
+      <select id="pago" required>
+        <option value="Contra Entrega">Contra Entrega</option>
+        <option value="Pago Anticipado">Pago Anticipado</option>
+      </select>
+
+      <button type="submit">✅ Hacer mi pedido</button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2025 Tenis VIP | Todos los derechos reservados</p>
+  <p><a href="#" style="color:#fff;">Términos y condiciones</a></p>
+</footer>
+
+<script>
+  // Contador de 12 horas
+  let countdownElement = document.getElementById("countdown");
+  let countdownTime = 12 * 60 * 60;
+
+  function updateCountdown() {
+    let hours = Math.floor(countdownTime / 3600);
+    let minutes = Math.floor((countdownTime % 3600) / 60);
+    let seconds = countdownTime % 60;
+    countdownElement.textContent =
+      String(hours).padStart(2,"0")+":"+String(minutes).padStart(2,"0")+":"+String(seconds).padStart(2,"0");
+    if (countdownTime > 0) countdownTime--;
+  }
+  setInterval(updateCountdown, 1000);
+
+  // Carrusel
+  const images = [
+    "https://i.ibb.co/9r9wZVQ/tenis1.jpg",
+    "https://i.ibb.co/3NzWcKp/tenis2.jpg",
+    "https://i.ibb.co/2F9xJ2M/tenis3.jpg"
+  ];
+  let index=0;
+  function changeImage(){
+    index=(index+1)%images.length;
+    document.getElementById("carousel-img").src=images[index];
+  }
+  setInterval(changeImage,3000);
+
+  // Modal
+  function openForm(ref="") {
+    document.getElementById("orderModal").style.display="flex";
+    document.getElementById("referencia").value=ref;
+  }
+  function closeForm(){
+    document.getElementById("orderModal").style.display="none";
+  }
+
+  // Enviar a WhatsApp
+  document.getElementById("orderForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let nombre=document.getElementById("nombre").value;
+    let direccion=document.getElementById("direccion").value;
+    let barrio=document.getElementById("barrio").value;
+    let telefono=document.getElementById("telefono").value;
+    let ciudad=document.getElementById("ciudad").value;
+    let departamento=document.getElementById("departamento").value;
+    let color=document.getElementById("color").value;
+    let talla=document.getElementById("talla").value;
+    let pago=document.getElementById("pago").value;
+    let ref=document.getElementById("referencia").value;
+
+    let mensaje=`👟 Nuevo pedido Tenis VIP:%0A
+🧾 Ref: ${ref}%0A
+👤 Nombre: ${nombre}%0A
+📍 Dirección: ${direccion}, Barrio: ${barrio}%0A
+📞 Tel: ${telefono}%0A
+🏙️ Ciudad: ${ciudad}, Dept: ${departamento}%0A
+🎨 Color: ${color}%0A
+📏 Talla: ${talla}%0A
+💳 Pago: ${pago}`;
+
+    window.open(`https://wa.me/573216732606?text=${mensaje}`,"_blank");
+  });
+</script>
+
+</body>
+</html>
