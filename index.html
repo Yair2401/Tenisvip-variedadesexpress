@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +12,8 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-  a{color:inherit}
+  a{color:inherit;text-decoration:none}
+
   /* Header */
   header{background:linear-gradient(90deg,#121212,#3a3a3a);color:#fff;padding:14px 18px;text-align:center;position:sticky;top:0;z-index:50}
   header h1{margin:0;font-size:1.05rem;letter-spacing:.3px}
@@ -36,7 +35,7 @@
   .stockbar{height:8px;background:#eee;border-radius:999px;overflow:hidden}
   .stockbar>span{display:block;height:100%;width:65%;background:linear-gradient(90deg,#f59e0b,#ef4444)}
 
-  /* Carousel right */
+  /* Carousel */
   .carousel{position:relative;padding:16px}
   .carousel img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;display:block;background:#dfe3ea}
   .carousel .dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
@@ -53,8 +52,8 @@
   ul.check li{margin:6px 0}
 
   /* Footer / sticky bar */
-  footer{background:#0e0e10;color:#ccc;padding:22px;text-align:center;margin-top:26px}
-  footer a{text-decoration:underline}
+  footer{background:#0e0e10;color:#ccc;padding:22px;text-align:center;margin-top:26px;font-size:.85rem}
+  footer a{text-decoration:underline;color:#fff}
   .sticky-cta{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:40;background:#111;color:#fff;padding:10px 14px;border-radius:12px;display:flex;gap:8px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
   .sticky-cta button{all:unset;background:var(--brand);padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
 
@@ -279,70 +278,96 @@
 
 <script>
   /* Contador 12h */
-  const cdEl=document.getElementById('countdown');
-  let end=Date.now()+12*60*60*1000;
-  function tick(){
-    const diff=end-Date.now();
-    if(diff<=0){end=Date.now()+12*60*60*1000;}
-    const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    cdEl.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':');
+  const cdEl = document.getElementById('countdown');
+  let end = Date.now() + 12 * 60 * 60 * 1000; // 12 horas
+
+  function tick() {
+    const now = Date.now();
+    let diff = end - now;
+    if (diff <= 0) {
+      end = Date.now() + 12 * 60 * 60 * 1000;
+      diff = end - now;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    cdEl.textContent = [h, m, s].map(v => String(v).padStart(2,'0')).join(':');
   }
-  setInterval(tick,1000);tick();
+  setInterval(tick, 1000);
+  tick();
 
   /* Stock dinámico */
-  const stockLeft=document.getElementById('stockLeft');
-  const stockLeft2=document.getElementById('stockLeft2');
-  let stock=24;
-  setInterval(()=>{if(stock>12){stock--;stockLeft.textContent=stock;stockLeft2.textContent=stock-6;}},15000);
+  const stockLeft = document.getElementById('stockLeft');
+  const stockLeft2 = document.getElementById('stockLeft2');
+  let stock = 24;
+  setInterval(() => {
+    if (stock > 12) {
+      stock--;
+      stockLeft.textContent = stock;
+      stockLeft2.textContent = stock - 6;
+    }
+  }, 15000);
 
   /* Carousel */
-  const slides=["REF-8085.jpg","REF-3636.jpg","REF-0054.jpg"];
-  const imgEl=document.getElementById('slide-img');
-  const dots=[...document.querySelectorAll('.dot')];
-  const swatches=[...document.querySelectorAll('.swatch')];
-  let idx=0;
-  function setSlide(i){idx=(i+slides.length)%slides.length;imgEl.src=slides[idx];dots.forEach((d,j)=>d.classList.toggle('active',j===idx));swatches.forEach((s,j)=>s.classList.toggle('active',j===idx));}
-  dots.forEach(d=>d.addEventListener('clickdots.forEach(d=>d.addEventListener('click',()=>setSlide(Number(d.dataset.index))));
-  swatches.forEach(s=>s.addEventListener('click',()=>setSlide(Number(s.dataset.index))));
-  setInterval(()=>setSlide(idx+1),4000);
+  const slides = ["REF-8085.jpg","REF-3636.jpg","REF-0054.jpg"];
+  const imgEl = document.getElementById('slide-img');
+  const dots = [...document.querySelectorAll('.dot')];
+  const swatches = [...document.querySelectorAll('.swatch')];
+  let idx = 0;
+
+  function setSlide(i) {
+    idx = (i + slides.length) % slides.length;
+    imgEl.src = slides[idx];
+    dots.forEach((d,j) => d.classList.toggle('active', j===idx));
+    swatches.forEach((s,j) => s.classList.toggle('active', j===idx));
+  }
+
+  dots.forEach(d => d.addEventListener('click', () => setSlide(Number(d.dataset.index))));
+  swatches.forEach(s => s.addEventListener('click', () => setSlide(Number(s.dataset.index))));
+  setInterval(() => setSlide(idx+1), 4000);
 
   /* Modal Form */
-  const modal=document.getElementById('orderModal');
-  const openers=document.querySelectorAll('.open-form');
-  const closeBtn=document.getElementById('closeModal');
-  const cancelBtn=document.getElementById('cancelBtn');
-  openers.forEach(btn=>btn.addEventListener('click',()=>modal.classList.add('open')));
-  function closeModal(){modal.classList.remove('open');}
-  closeBtn.addEventListener('click',closeModal);
-  cancelBtn.addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+  const modal = document.getElementById('orderModal');
+  const openers = document.querySelectorAll('.open-form');
+  const closeBtn = document.getElementById('closeModal');
+  const cancelBtn = document.getElementById('cancelBtn');
+  openers.forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
+  function closeModal(){ modal.classList.remove('open'); }
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 
   /* Terms modal */
-  const termsModal=document.getElementById('termsModal');
-  document.getElementById('openTerms').addEventListener('click',(e)=>{e.preventDefault();termsModal.classList.add('open');});
-  document.getElementById('closeTerms').addEventListener('click',()=>termsModal.classList.remove('open'));
-  termsModal.addEventListener('click',e=>{if(e.target===termsModal)termsModal.classList.remove('open');});
+  const termsModal = document.getElementById('termsModal');
+  document.getElementById('openTerms').addEventListener('click', e => {
+    e.preventDefault();
+    termsModal.classList.add('open');
+  });
+  document.getElementById('closeTerms').addEventListener('click', () => termsModal.classList.remove('open'));
+  termsModal.addEventListener('click', e => { if(e.target === termsModal) termsModal.classList.remove('open'); });
 
   /* WhatsApp envío */
-  const form=document.getElementById('orderForm');
-  form.addEventListener('submit',function(e){
+  const form = document.getElementById('orderForm');
+  form.addEventListener('submit', function(e){
     e.preventDefault();
-    const data={
-      nombre:document.getElementById('nombre').value.trim(),
-      telefono:document.getElementById('telefono').value.trim(),
-      ciudad:document.getElementById('ciudad').value.trim(),
-      departamento:document.getElementById('departamento').value.trim(),
-      direccion:document.getElementById('direccion').value.trim(),
-      barrio:document.getElementById('barrio').value.trim(),
-      color:document.getElementById('color').value,
-      talla:document.getElementById('talla').value,
-      pago:document.getElementById('pago').value
+    const data = {
+      nombre: document.getElementById('nombre').value.trim(),
+      telefono: document.getElementById('telefono').value.trim(),
+      ciudad: document.getElementById('ciudad').value.trim(),
+      departamento: document.getElementById('departamento').value.trim(),
+      direccion: document.getElementById('direccion').value.trim(),
+      barrio: document.getElementById('barrio').value.trim(),
+      color: document.getElementById('color').value,
+      talla: document.getElementById('talla').value,
+      pago: document.getElementById('pago').value
     };
+
     if(!/^[0-9]{10}$/.test(data.telefono)){
       alert("El teléfono debe tener 10 dígitos numéricos");
       return;
     }
-    const msg=
+
+    const msg = 
 `📦 Nuevo pedido Tenis VIP
 
 👤 Nombre: ${data.nombre}
@@ -356,8 +381,8 @@
 
 ⚡ ¡Pedido enviado, espera confirmación!`;
 
-    const url="https://wa.me/573216732606?text="+encodeURIComponent(msg);
-    window.open(url,"_blank");
+    const url = "https://wa.me/573216732606?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
     closeModal();
   });
 </script>
