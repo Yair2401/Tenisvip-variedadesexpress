@@ -198,11 +198,14 @@
     <span class="close-x" id="closeModal" aria-label="Cerrar">&times;</span>
     <h3>📝 Completa tu pedido</h3>
     <form id="orderForm" novalidate>
+      
+      <!-- Campo referencia (se llena al elegir color) -->
       <div class="row-1">
-        <label>Referencia (auto)</label>
-        <input id="ref" name="ref" readonly required value="REF: 8085">
+        <label>Referencia</label>
+        <input id="ref" name="ref" readonly placeholder="Se llenará al elegir color">
       </div>
 
+      <!-- Nombre y teléfono -->
       <div class="row">
         <div>
           <label>Nombre y Apellido</label>
@@ -214,6 +217,7 @@
         </div>
       </div>
 
+      <!-- Ciudad y departamento -->
       <div class="row">
         <div>
           <label>Ciudad</label>
@@ -225,6 +229,7 @@
         </div>
       </div>
 
+      <!-- Dirección y barrio -->
       <div class="row">
         <div>
           <label>Dirección</label>
@@ -236,14 +241,15 @@
         </div>
       </div>
 
+      <!-- Color y talla -->
       <div class="row">
         <div>
           <label>Color</label>
           <select id="color" required>
             <option value="" disabled selected>-- Selecciona un color --</option>
-            <option value="Café + Azul (REF: 8085)">Café + Azul (REF: 8085)</option>
-            <option value="Blanco + Azul/Gris (REF: 3636)">Blanco + Azul/Gris (REF: 3636)</option>
-            <option value="Negro + Gris (REF: 0054)">Negro + Gris (REF: 0054)</option>
+            <option value="Café + Azul – REF: 8085">Café + Azul (REF: 8085)</option>
+            <option value="Blanco + Azul/Gris – REF: 3636">Blanco + Azul/Gris (REF: 3636)</option>
+            <option value="Negro + Gris – REF: 0054">Negro + Gris (REF: 0054)</option>
           </select>
         </div>
         <div>
@@ -255,6 +261,35 @@
           </select>
         </div>
       </div>
+
+      <!-- Método de pago -->
+      <div class="row-1">
+        <label>Método de Pago</label>
+        <select id="pago" required>
+          <option value="" disabled selected>-- Selecciona método --</option>
+          <option value="Contra Entrega">Contra Entrega</option>
+          <option value="Pago Anticipado">Pago Anticipado</option>
+        </select>
+      </div>
+
+      <!-- Botón enviar -->
+      <button type="submit">✅ Hacer mi pedido</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Llenar automáticamente la referencia al elegir un color
+  document.getElementById("color").addEventListener("change", function() {
+    const refInput = document.getElementById("ref");
+    const selectedOption = this.options[this.selectedIndex].text;
+    if (this.value) {
+      refInput.value = selectedOption;
+    } else {
+      refInput.value = "";
+    }
+  });
+</script>
 
       <div class="row-1">
         <label>Método de Pago</label>
