@@ -1,86 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Tenis VIP – Oferta Limitada</title>
-<meta name="description" content="Tenis VIP edición limitada. Tallas 35-43. Envíos a nivel nacional. Pago contra entrega o pago anticipado. ¡Aprovecha antes de que se agoten!" />
-<style>
-  :root{
-    --bg:#f6f6f7; --text:#1c1c1e; --muted:#666; --brand:#ff4d00; --brand-2:#e63946;
-    --ok:#16a34a; --danger:#ef4444; --dark:#0f1115; --card:#ffffff;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-  a{color:inherit}
-  /* Header */
-  header{background:linear-gradient(90deg,#121212,#3a3a3a);color:#fff;padding:14px 18px;text-align:center;position:sticky;top:0;z-index:50}
-  header h1{margin:0;font-size:1.05rem;letter-spacing:.3px}
-  header p{margin:6px 0 0 0;font-size:.9rem;color:#e8e8e8}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenis VIP - Edición Limitada</title>
+  <style>
+    :root{
+      --bg:#f6f6f7; --text:#1c1c1e; --muted:#666; --brand:#ff4d00; --brand-2:#e63946;
+      --ok:#16a34a; --danger:#ef4444; --dark:#0f1115; --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+    a{color:inherit;text-decoration:none}
 
-  /* Layout */
-  .container{max-width:1100px;margin:0 auto;padding:24px}
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-  .card{background:var(--card);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
-  .hero .left{padding:28px}
-  .hero h2{margin:0 0 8px 0;font-size:1.8rem;color:var(--brand-2)}
-  .muted{color:var(--muted)}
-  .countdown{font-weight:700;font-size:1.6rem;color:var(--danger);margin:10px 0 14px}
-  .cta{display:inline-flex;gap:8px;align-items:center;padding:14px 20px;background:var(--brand);color:#fff;border-radius:12px;border:none;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 8px 16px rgba(255,77,0,.25);transition:.2s}
-  .cta:hover{transform:translateY(-1px);box-shadow:0 10px 18px rgba(255,77,0,.32)}
-  .cta.secondary{background:#111}
-  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  .badge{background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.8rem}
-  .stockbar{height:8px;background:#eee;border-radius:999px;overflow:hidden}
-  .stockbar>span{display:block;height:100%;width:65%;background:linear-gradient(90deg,#f59e0b,#ef4444)}
-  /* Carousel right */
-  .carousel{position:relative;padding:16px}
-  .carousel img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;display:block;background:#dfe3ea}
-  .carousel .dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
-  .dot{width:12px;height:12px;border-radius:999px;background:#c9c9c9;border:none;cursor:pointer}
-  .dot.active{background:#111}
-  .swatches{display:flex;gap:10px;justify-content:center;margin-top:10px}
-  .swatch{padding:8px 10px;border-radius:999px;border:1px solid #ddd;background:#fff;font-size:.85rem;cursor:pointer}
-  .swatch.active{border-color:#111;font-weight:700}
+    /* Header */
+    header{background:linear-gradient(90deg,#121212,#3a3a3a);color:#fff;padding:14px 18px;text-align:center;position:sticky;top:0;z-index:50}
+    header h1{margin:0;font-size:1.05rem;letter-spacing:.3px}
+    header p{margin:6px 0 0 0;font-size:.9rem;color:#e8e8e8}
 
-  /* Sections */
-  section{margin-top:26px}
-  .section-card{padding:22px}
-  ul.check{padding-left:18px;margin:10px 0 0}
-  ul.check li{margin:6px 0}
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero .left{padding:28px}
+    .hero h2{margin:0 0 8px 0;font-size:1.8rem;color:var(--brand-2)}
+    .muted{color:var(--muted)}
+    .countdown{font-weight:700;font-size:1.6rem;color:var(--danger);margin:10px 0 14px}
+    .cta{display:inline-flex;gap:8px;align-items:center;padding:14px 20px;background:var(--brand);color:#fff;border-radius:12px;border:none;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 8px 16px rgba(255,77,0,.25);transition:.2s}
+    .cta:hover{transform:translateY(-1px);box-shadow:0 10px 18px rgba(255,77,0,.32)}
 
-  /* Footer / sticky bar */
-  footer{background:#0e0e10;color:#ccc;padding:22px;text-align:center;margin-top:26px}
-  footer a{text-decoration:underline}
-  .sticky-cta{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:40;background:#111;color:#fff;padding:10px 14px;border-radius:12px;display:flex;gap:8px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
-  .sticky-cta button{all:unset;background:var(--brand);padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    /* Carousel */
+    .carousel{position:relative;padding:16px}
+    .carousel img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;display:block;background:#dfe3ea}
 
-  /* Modal form */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:60;padding:14px}
-  .modal.open{display:grid}
-  .modal .panel{width:min(560px,100%);background:#fff;border-radius:16px;padding:18px 18px 22px}
-  .modal .panel h3{margin:0 0 8px;font-size:1.25rem;color:var(--brand-2)}
-  .close-x{float:right;font-size:1.6rem;cursor:pointer;color:#555}
-  form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  form .row-1{display:grid;grid-template-columns:1fr;gap:12px}
-  label{display:block;margin:8px 0 4px;font-weight:600}
-  input,select{width:100%;padding:12px;border:1px solid #d9d9df;border-radius:10px;font-size:1rem;background:#fff}
-  .actions{display:flex;gap:10px;margin-top:14px}
-  .actions button{flex:1}
-  .note{font-size:.85rem;color:var(--muted);margin-top:6px}
+    /* Footer / sticky bar */
+    footer{background:#0e0e10;color:#ccc;padding:22px;text-align:center;margin-top:26px;font-size:.85rem}
+    footer a{text-decoration:underline;color:#fff}
+    .sticky-cta{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:40;background:#111;color:#fff;padding:10px 14px;border-radius:12px;display:flex;gap:8px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+    .sticky-cta button{all:unset;background:var(--brand);padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
 
-  /* Terms modal */
-  .terms p{margin:.6rem 0;color:#333}
+    /* Modal form */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:60;padding:14px}
+    .modal.open{display:grid}
+    .modal .panel{width:min(560px,100%);background:#fff;border-radius:16px;padding:18px 18px 22px}
+    .modal .panel h3{margin:0 0 8px;font-size:1.25rem;color:var(--brand-2)}
+    .close-x{float:right;font-size:1.6rem;cursor:pointer;color:#555}
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    form .row-1{display:grid;grid-template-columns:1fr;gap:12px}
+    label{display:block;margin:8px 0 4px;font-weight:600}
+    input,select{width:100%;padding:12px;border:1px solid #d9d9df;border-radius:10px;font-size:1rem;background:#fff}
+    .actions{display:flex;gap:10px;margin-top:14px}
+    .actions button{flex:1}
+    .note{font-size:.85rem;color:var(--muted);margin-top:6px}
 
-  /* Responsive */
-  @media (max-width: 900px){
-    .hero{grid-template-columns:1fr;gap:18px}
-    .hero .left{padding:18px}
-    .carousel{padding:12px}
-    .sticky-cta{width:92%}
-    form .row{grid-template-columns:1fr}
-  }
-</style>
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .hero .left{padding:18px}
+      .carousel{padding:12px}
+      .sticky-cta{width:92%}
+      form .row{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
 
@@ -90,373 +70,148 @@
 </header>
 
 <div class="container">
-
-  <!-- HERO -->
   <section class="hero">
-    <div class="left card">
+    <div class="left">
       <h2>Oferta por tiempo limitado</h2>
       <div class="countdown" id="countdown">12:00:00</div>
-      <p class="muted">¡Corre! Solo pocas unidades por color disponibles.</p>
-      <div class="badges">
-        <span class="badge">Pago contra entrega</span>
-        <span class="badge">Envío nacional</span>
-        <span class="badge">Garantía de satisfacción</span>
-      </div>
-      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="cta" id="cta-hero">
-          👉 Comprar Ahora
-        </button>
-        <button class="cta secondary" id="cta-hero-2">Ver detalles</button>
-      </div>
-      <div style="margin-top:18px">
-        <div class="stockbar"><span id="stockbar"></span></div>
-        <small class="muted">Quedan solo <b id="stockLeft">24</b> pares hoy</small>
-      </div>
+      <p class="muted">¡Solo quedan pocas unidades por color!</p>
+      <button class="cta" id="openForm">👉 Comprar Ahora</button>
     </div>
 
-    <!-- Carousel Right -->
-    <div class="carousel card">
-      <!-- Coloca aquí tus imágenes (mismo directorio) o reemplaza rutas -->
-      <img id="slide-img" src="REF-8085.jpg" alt="Tenis VIP - 8085 (café/azul)" />
-      <div class="dots" aria-label="selector de imagen">
-        <button class="dot active" data-index="0" aria-label="8085"></button>
-        <button class="dot" data-index="1" aria-label="3636"></button>
-        <button class="dot" data-index="2" aria-label="0054"></button>
-      </div>
-      <div class="swatches">
-        <button class="swatch active" data-index="0">Café + Azul (REF: 8085)</button>
-        <button class="swatch" data-index="1">Blanco + Azul/Gris (REF: 3636)</button>
-        <button class="swatch" data-index="2">Negro + Gris (REF: 0054)</button>
-      </div>
+    <div class="carousel">
+      <img id="carousel-img" src="https://i.ibb.co/9r9wZVQ/tenis1.jpg" alt="Tenis VIP">
     </div>
   </section>
-
-  <!-- PRODUCTO -->
-  <section class="section-card card">
-    <h3>👟 Producto</h3>
-    <p class="muted">Edición limitada con diseño robusto y suela antideslizante para uso diario.</p>
-    <ul class="check">
-      <li>✔️ Diseño moderno y resistente</li>
-      <li>✔️ Comodidad para caminar todo el día</li>
-      <li>✔️ Suela con agarre de alto rendimiento</li>
-    </ul>
-    <div style="margin-top:12px">
-      <button class="cta open-form">Quiero los míos ahora</button>
-    </div>
-  </section>
-
-  <!-- PROMO -->
-  <section class="section-card card">
-    <h3>📦 Promoción</h3>
-    <p><b>¡Solo quedan pocas unidades en stock por color!</b></p>
-    <p class="muted">💥 Precio especial por tiempo limitado. Envío inmediato.</p>
-    <button class="cta open-form">Apartar con mi talla</button>
-  </section>
-
-  <!-- TALLAS -->
-  <section class="section-card card">
-    <h3>📏 Tallas disponibles</h3>
-    <p>Del <b>35</b> al <b>43</b>. Asegura tu par antes de que se agote.</p>
-    <div class="badges">
-      <span class="badge">35</span><span class="badge">36</span><span class="badge">37</span>
-      <span class="badge">38</span><span class="badge">39</span><span class="badge">40</span>
-      <span class="badge">41</span><span class="badge">42</span><span class="badge">43</span>
-    </div>
-  </section>
-
-  <!-- GARANTÍA -->
-  <section class="section-card card">
-    <h3>🛡️ Garantía & Confianza</h3>
-    <ul class="check">
-      <li>✔️ Pago contra entrega o pago anticipado</li>
-      <li>✔️ Envíos a nivel nacional</li>
-      <li>✔️ Cambios por talla (aplican términos)</li>
-    </ul>
-    <button class="cta open-form">Comprar con garantía</button>
-  </section>
-
-  <!-- ESCASEZ -->
-  <section class="section-card card">
-    <h3>🕒 Últimas unidades hoy</h3>
-    <div class="stockbar"><span id="stockbar2" style="width:55%"></span></div>
-    <p class="muted">“Quedan solo <b id="stockLeft2">18</b> pares disponibles hoy”</p>
-    <button class="cta open-form">🔥 Apartar mi par ahora</button>
-  </section>
-
 </div>
 
-<-- STICKY CTA -->
-<div class="sticky-cta" id="sticky">
-  <span>🔥 Últimas tallas disponibles</span>
-  <button class="open-form">Apartar mi par</button>
+<!-- Sticky CTA -->
+<div class="sticky-cta">
+  <span>🔥 Aparta tu par ahora</span>
+  <button id="openForm2">Hacer mi pedido</button>
 </div>
 
-<!-- MODAL: FORMULARIO PEDIDO -->
-<!-- MODAL: FORMULARIO PEDIDO -->
-<div class="modal" id="orderModal" aria-hidden="true">
+<!-- Modal Form -->
+<div class="modal" id="modal">
   <div class="panel">
-    <span class="close-x" id="closeModal" aria-label="Cerrar">&times;</span>
-    <h3>📝 Completa tu pedido</h3>
-    <form id="orderForm" novalidate>
-      
-      <!-- Campo referencia (se llena al elegir color) -->
-      <div class="row-1">
-        <label>Referencia</label>
-        <input id="ref" name="ref" readonly placeholder="Se llenará al elegir color">
-      </div>
-
-      <!-- Nombre y teléfono -->
+    <span class="close-x" id="closeForm">&times;</span>
+    <h3>Completa tu pedido</h3>
+    <form id="pedidoForm">
       <div class="row">
         <div>
           <label>Nombre y Apellido</label>
-          <input id="nombre" required placeholder="Ej: Juan Pérez">
+          <input type="text" name="nombre" required>
         </div>
         <div>
           <label>Teléfono</label>
-          <input id="telefono" required inputmode="tel" placeholder="Ej: 3001234567">
+          <input type="tel" name="telefono" required>
         </div>
       </div>
-
-      <!-- Ciudad y departamento -->
       <div class="row">
         <div>
           <label>Ciudad</label>
-          <input id="ciudad" required placeholder="Ej: Bogotá">
+          <input type="text" name="ciudad" required>
         </div>
         <div>
           <label>Departamento</label>
-          <input id="departamento" required placeholder="Ej: Cundinamarca">
+          <input type="text" name="departamento" required>
         </div>
       </div>
-
-      <!-- Dirección y barrio -->
       <div class="row">
         <div>
-          <label>Dirección</label>
-          <input id="direccion" required placeholder="Ej: Calle 10 # 20-30">
+          <label>Barrio</label>
+          <input type="text" name="barrio" required>
         </div>
         <div>
-          <label>Barrio</label>
-          <input id="barrio" required placeholder="Ej: La Soledad">
+          <label>Dirección</label>
+          <input type="text" name="direccion" required>
         </div>
       </div>
-
-      <!-- Color y talla -->
       <div class="row">
         <div>
           <label>Color</label>
-          <select id="color" required>
-            <option value="" disabled selected>-- Selecciona un color --</option>
-            <option value="Café + Azul – REF: 8085">Café + Azul (REF: 8085)</option>
-            <option value="Blanco + Azul/Gris – REF: 3636">Blanco + Azul/Gris (REF: 3636)</option>
-            <option value="Negro + Gris – REF: 0054">Negro + Gris (REF: 0054)</option>
+          <select name="color" required>
+            <option value="">Selecciona</option>
+            <option value="Café con Azul (REF 8085)">Café con Azul (REF 8085)</option>
+            <option value="Blanco con Azul/Gris (REF 3636)">Blanco con Azul/Gris (REF 3636)</option>
+            <option value="Negro con Gris (REF 0054)">Negro con Gris (REF 0054)</option>
           </select>
         </div>
         <div>
           <label>Talla</label>
-          <select id="talla" required>
-            <option value="" disabled selected>-- Selecciona talla --</option>
-            <option>35</option><option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option><option>42</option><option>43</option>
+          <select name="talla" required>
+            <option value="">Selecciona</option>
+            <script>
+              for(let i=35; i<=43; i++){
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
           </select>
         </div>
       </div>
-
-      <!-- Método de pago -->
       <div class="row-1">
         <label>Método de Pago</label>
-        <select id="pago" required>
-          <option value="" disabled selected>-- Selecciona método --</option>
-          <option value="Contra Entrega">Contra Entrega</option>
-          <option value="Pago Anticipado">Pago Anticipado</option>
+        <select name="pago" required>
+          <option value="">Selecciona</option>
+          <option value="Pago contra entrega">Pago contra entrega</option>
+          <option value="Pago anticipado">Pago anticipado</option>
         </select>
       </div>
-
-      <!-- Botón enviar -->
-      <button type="submit">✅ Hacer mi pedido</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  // Llenar automáticamente la referencia al elegir un color
-  document.getElementById("color").addEventListener("change", function() {
-    const refInput = document.getElementById("ref");
-    const selectedOption = this.options[this.selectedIndex].text;
-    if (this.value) {
-      refInput.value = selectedOption;
-    } else {
-      refInput.value = "";
-    }
-  });
-</script>
-
-      <div class="row-1">
-        <label>Método de Pago</label>
-        <select id="pago" required>
-          <option value="" disabled selected>-- Selecciona método --</option>
-          <option value="Contra Entrega">Contra Entrega</option>
-          <option value="Pago Anticipado">Pago Anticipado</option>
-        </select>
-      </div>
-
-      <button type="submit">✅ Hacer mi pedido</button>
-    </form>
-  </div>
-</div>
-
-      <div class="row-1">
-        <label>Método de pago</label>
-        <select id="pago" required>
-          <option value="Contra Entrega">Contra Entrega</option>
-          <option value="Pago Anticipado">Pago Anticipado</option>
-        </select>
-      </div>
-
       <div class="actions">
-        <button class="cta" type="submit">✅ Hacer mi pedido</button>
-        <button class="cta secondary" type="button" id="cancelBtn">Cancelar</button>
+        <button type="submit" class="cta">Hacer mi pedido</button>
       </div>
-      <p class="note">Al continuar, tus datos se enviarán por WhatsApp al <b>+57 3216732606</b> para confirmar disponibilidad y envío.</p>
     </form>
-  </div>
-</div>
-
-<!-- MODAL: TÉRMINOS -->
-<div class="modal" id="termsModal" aria-hidden="true">
-  <div class="panel terms">
-    <span class="close-x" id="closeTerms">&times;</span>
-    <h3>📄 Términos y condiciones</h3>
-    <p><b>Envíos:</b> a nivel nacional. Tiempos estimados 2–5 días hábiles según ciudad.</p>
-    <p><b>Pago:</b> Contra entrega (aplica cobertura) o pago anticipado por los medios acordados.</p>
-    <p><b>Cambios por talla:</b> dentro de los 5 días posteriores a la entrega, producto sin uso y en empaque original. Costos de envío por cambio a cargo del comprador.</p>
-    <p><b>Garantía:</b> 30 días por defectos de fabricación. No cubre desgaste por uso normal.</p>
-    <p><b>Privacidad:</b> Tus datos se usarán solo para gestionar el pedido.</p>
+    <p class="note">Tu información es obligatoria para procesar el pedido.</p>
   </div>
 </div>
 
 <footer>
-  <p>© 2025 Tenis VIP | Todos los derechos reservados • <a href="#" id="openTerms">Términos y condiciones</a></p>
+  <p>© 2025 Tenis VIP | Todos los derechos reservados</p>
+  <p><a href="#">Términos y condiciones</a></p>
 </footer>
 
 <script>
-  /* ==== Contador 12h con persistencia ==== */
-  const cdEl = document.getElementById('countdown');
-  const KEY='vipCountdownEnd';
-  function startCountdown(){
-    let end = localStorage.getItem(KEY);
-    const now = Date.now();
-    if(!end || now >= Number(end)){
-      end = now + 12*60*60*1000; // 12h
-      localStorage.setItem(KEY, end);
-    }
-    function tick(){
-      const diff = Number(end) - Date.now();
-      if(diff <= 0){
-        cdEl.textContent = '00:00:00';
-        // Reinicia otras 12h para seguir vendiendo
-        localStorage.setItem(KEY, Date.now() + 12*60*60*1000);
-        return;
-      }
-      const h = Math.floor(diff/3600000);
-      const m = Math.floor((diff%3600000)/60000);
-      const s = Math.floor((diff%60000)/1000);
-      cdEl.textContent = [h,m,s].map(v=>String(v).padStart(2,'0')).join(':');
-      requestAnimationFrame(()=>setTimeout(tick,500));
-    }
-    tick();
+  // Contador 12h
+  let countdownElement = document.getElementById("countdown");
+  let countdownTime = 12 * 60 * 60;
+  function updateCountdown() {
+    let h = Math.floor(countdownTime / 3600);
+    let m = Math.floor((countdownTime % 3600) / 60);
+    let s = countdownTime % 60;
+    countdownElement.textContent =
+      String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+    if (countdownTime > 0) countdownTime--;
   }
-  startCountdown();
+  setInterval(updateCountdown, 1000);
 
-  /* ==== Stock dinámico simple ==== */
-  const stockLeft = document.getElementById('stockLeft');
-  const stockLeft2 = document.getElementById('stockLeft2');
-  let stock = 24;
-  setInterval(()=>{
-    if(stock>12){ stock--; stockLeft.textContent=stock; stockLeft2.textContent=stock-6; }
-  }, 15000);
-
-  /* ==== Carousel / variantes ==== */
-  const slides = [
-    {src:'REF-8085.jpg', ref:'REF: 8085', color:'Café + Azul (REF: 8085)'},
-    {src:'REF-3636.jpg', ref:'REF: 3636', color:'Blanco + Azul/Gris (REF: 3636)'},
-    {src:'REF-0054.jpg', ref:'REF: 0054', color:'Negro + Gris (REF: 0054)'}
+  // Carrusel
+  const imgs = [
+    "https://i.ibb.co/9r9wZVQ/tenis1.jpg",
+    "https://i.ibb.co/3NzWcKp/tenis2.jpg",
+    "https://i.ibb.co/2F9xJ2M/tenis3.jpg"
   ];
-  const imgEl = document.getElementById('slide-img');
-  const dots=[...document.querySelectorAll('.dot')];
-  const swatches=[...document.querySelectorAll('.swatch')];
   let idx=0;
-  function setSlide(i){
-    idx = (i+slides.length)%slides.length;
-    imgEl.src = slides[idx].src;
-    dots.forEach((d,j)=>d.classList.toggle('active',j===idx));
-    swatches.forEach((s,j)=>s.classList.toggle('active',j===idx));
-    // Actualiza referencia por defecto del formulario
-    document.getElementById('ref').value = slides[idx].ref;
-    document.getElementById('color').value = slides[idx].color;
-  }
-  dots.forEach(d=>d.addEventListener('click',()=>setSlide(Number(d.dataset.index))));
-  swatches.forEach(s=>s.addEventListener('click',()=>setSlide(Number(s.dataset.index))));
-  setInterval(()=>setSlide(idx+1), 4000);
+  function changeImg(){idx=(idx+1)%imgs.length;document.getElementById("carousel-img").src=imgs[idx];}
+  setInterval(changeImg,3000);
 
-  /* ==== Modal Form ==== */
-  const modal = document.getElementById('orderModal');
-  const openers = document.querySelectorAll('.open-form, #cta-hero, #cta-hero-2');
-  const closeBtn = document.getElementById('closeModal');
-  const cancelBtn = document.getElementById('cancelBtn');
-  openers.forEach(btn=>btn.addEventListener('click',()=>{ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }));
-  function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
-  closeBtn.addEventListener('click',closeModal);
-  cancelBtn.addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+  // Modal
+  const modal=document.getElementById("modal");
+  document.getElementById("openForm").onclick=()=>modal.classList.add("open");
+  document.getElementById("openForm2").onclick=()=>modal.classList.add("open");
+  document.getElementById("closeForm").onclick=()=>modal.classList.remove("open");
 
-  /* ==== Terms modal ==== */
-  const termsModal=document.getElementById('termsModal');
-  document.getElementById('openTerms').addEventListener('click', (e)=>{ e.preventDefault(); termsModal.classList.add('open'); });
-  document.getElementById('closeTerms').addEventListener('click', ()=>termsModal.classList.remove('open'));
-  termsModal.addEventListener('click',e=>{ if(e.target===termsModal) termsModal.classList.remove('open'); });
-
-  /* ==== WhatsApp submit ==== */
-  const form = document.getElementById('orderForm');
-  form.addEventListener('submit', function(e){
+  // WhatsApp envío
+  document.getElementById("pedidoForm").addEventListener("submit",function(e){
     e.preventDefault();
-    // Validación mínima
-    const required = ['ref','nombre','telefono','ciudad','departamento','direccion','barrio','color','talla','pago'];
-    for(const id of required){
-      const el = document.getElementById(id);
-      if(!el || !el.value){ el.focus(); return; }
-    }
-    const data = {
-      ref: document.getElementById('ref').value,
-      nombre: document.getElementById('nombre').value.trim(),
-      telefono: document.getElementById('telefono').value.trim(),
-      ciudad: document.getElementById('ciudad').value.trim(),
-      departamento: document.getElementById('departamento').value.trim(),
-      direccion: document.getElementById('direccion').value.trim(),
-      barrio: document.getElementById('barrio').value.trim(),
-      color: document.getElementById('color').value,
-      talla: document.getElementById('talla').value,
-      pago: document.getElementById('pago').value
-    };
-    const msg = 
-`👟 Nuevo pedido Tenis VIP
-🧾 ${data.ref}
-🎨 Color: ${data.color}
-📏 Talla: ${data.talla}
-👤 Nombre: ${data.nombre}
-📞 Tel: ${data.telefono}
-📍 Dirección: ${data.direccion}, Barrio: ${data.barrio}
-🏙️ Ciudad: ${data.ciudad} – ${data.departamento}
-💳 Pago: ${data.pago}`;
-
-    const url = "https://wa.me/573216732606?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank");
-  });
-
-  /* ==== Sin imágenes? Muestra fallback ==== */
-  imgEl.addEventListener('error', ()=>{
-    imgEl.style.background = '#cfd6e6';
-    imgEl.alt = 'Imagen no encontrada. Reemplaza REF-8085.jpg / REF-3636.jpg / REF-0054.jpg';
+    const data=new FormData(this);
+    let msg=`📦 Nuevo pedido Tenis VIP%0A
+👤 Nombre: ${data.get("nombre")}%0A
+📞 Tel: ${data.get("telefono")}%0A
+🏙️ Ciudad: ${data.get("ciudad")} - ${data.get("departamento")}%0A
+🏠 Dirección: ${data.get("direccion")}, Barrio: ${data.get("barrio")}%0A
+🎨 Color: ${data.get("color")}%0A
+📏 Talla: ${data.get("talla")}%0A
+💳 Pago: ${data.get("pago")}`;
+    window.open(`https://wa.me/573216732606?text=${msg}`,"_blank");
   });
 </script>
 </body>
