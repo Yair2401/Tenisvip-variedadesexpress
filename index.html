@@ -185,12 +185,13 @@
 
 </div>
 
-<!-- STICKY CTA -->
+<-- STICKY CTA -->
 <div class="sticky-cta" id="sticky">
   <span>🔥 Últimas tallas disponibles</span>
   <button class="open-form">Apartar mi par</button>
 </div>
 
+<!-- MODAL: FORMULARIO PEDIDO -->
 <!-- MODAL: FORMULARIO PEDIDO -->
 <div class="modal" id="orderModal" aria-hidden="true">
   <div class="panel">
@@ -238,22 +239,36 @@
       <div class="row">
         <div>
           <label>Color</label>
-<select id="color" required>
-  <option value="" disabled selected>-- Selecciona un color --</option>
-  <option value="Café + Azul (REF: 8085)">Café + Azul (REF: 8085)</option>
-  <option value="Blanco + Azul/Gris (REF: 3636)">Blanco + Azul/Gris (REF: 3636)</option>
-  <option value="Negro + Gris (REF: 0054)">Negro + Gris (REF: 0054)</option>
-</select>
+          <select id="color" required>
+            <option value="" disabled selected>-- Selecciona un color --</option>
+            <option value="Café + Azul (REF: 8085)">Café + Azul (REF: 8085)</option>
+            <option value="Blanco + Azul/Gris (REF: 3636)">Blanco + Azul/Gris (REF: 3636)</option>
+            <option value="Negro + Gris (REF: 0054)">Negro + Gris (REF: 0054)</option>
+          </select>
         </div>
         <div>
           <label>Talla</label>
           <select id="talla" required>
-            <option value="">Selecciona</option>
+            <option value="" disabled selected>-- Selecciona talla --</option>
             <option>35</option><option>36</option><option>37</option><option>38</option>
             <option>39</option><option>40</option><option>41</option><option>42</option><option>43</option>
           </select>
         </div>
       </div>
+
+      <div class="row-1">
+        <label>Método de Pago</label>
+        <select id="pago" required>
+          <option value="" disabled selected>-- Selecciona método --</option>
+          <option value="Contra Entrega">Contra Entrega</option>
+          <option value="Pago Anticipado">Pago Anticipado</option>
+        </select>
+      </div>
+
+      <button type="submit">✅ Hacer mi pedido</button>
+    </form>
+  </div>
+</div>
 
       <div class="row-1">
         <label>Método de pago</label>
